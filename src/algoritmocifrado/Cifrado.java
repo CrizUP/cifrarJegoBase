@@ -23,7 +23,13 @@ public class Cifrado {
             if ((new String(ALFABETO).contains(Character.toString(chars[i]))) ){
                 
                 int posLetraNormal = new String(ALFABETO).indexOf(Character.toString(chars[i]));
-                int posLetraCifrada = calcularPosicion(base, posLetraNormal);
+                int posLetraCifrada;
+                if (base >= 0){
+                    posLetraCifrada = calcularPosicion(base, posLetraNormal);
+                }else{
+                    posLetraCifrada = calcularPosicionInvertida(-(base), posLetraNormal);
+                }
+                
                 resultado[i] = ALFABETO[posLetraCifrada];
                 
             } else {                
@@ -51,7 +57,16 @@ public class Cifrado {
             if ((new String(ALFABETO).contains(Character.toString(chars[i]))) ){
                 
                 int posLetraNormal = new String(ALFABETO).indexOf(Character.toString(chars[i]));
-                int posLetraCifrada = calcularPosicionInvertida(base, posLetraNormal);
+                
+                int posLetraCifrada;
+                if (base >= 0){
+                    posLetraCifrada = calcularPosicionInvertida(base, posLetraNormal);
+                   
+                }else{
+                     posLetraCifrada = calcularPosicion(-(base), posLetraNormal);
+                }
+                
+                
                 resultado[i] = ALFABETO[posLetraCifrada];
                 
             } else {                
